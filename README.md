@@ -1,18 +1,144 @@
-# React + Vite
+# 🧠 Wumpus World AI Agent (React + Logic)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A smart **Wumpus World simulation** where an AI agent uses **logic instead of luck** to survive.
 
-Currently, two official plugins are available:
+Built with **React**, this project visualizes how **propositional logic and resolution** help an agent make safe decisions.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## ⚡ Quick Highlights
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- 🤖 Logic-driven agent (no random guessing)
+- 💡 Uses **Resolution Refutation**
+- 📡 Real-time percept detection (Breeze & Stench)
+- 🧭 Intelligent movement strategy
+- 🎮 Step mode + Auto simulation
+- 📋 Transparent reasoning logs
 
-Note: This will impact Vite dev & build performances.
+---
 
-## Expanding the ESLint configuration
+## 🌍 The Environment
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The world is a grid containing:
+- 🕳 **Pits** → deadly if entered  
+- 👹 **Wumpus** → kills the agent  
+- 🤖 **Agent** → starts at (0,0)  
+
+---
+
+## 🔍 How the Agent Thinks
+
+### Step 1: Observe
+The agent senses:
+- Breeze → Pit nearby  
+- Stench → Wumpus nearby  
+
+---
+
+### Step 2: Store Knowledge
+All observations are saved in a **Knowledge Base**:
+- Safe cells
+- Visited cells
+- Percepts (breeze/stench)
+
+---
+
+### Step 3: Reason (Key Logic)
+
+#### ✔ CNF-Based Rules
+- No Breeze ⇒ No Pit nearby  
+- No Stench ⇒ No Wumpus nearby  
+
+---
+
+#### ✔ Resolution Refutation
+To check safety of a cell:
+
+1. Assume the cell is dangerous  
+2. Look for contradiction with known facts  
+3. If contradiction exists → cell is **SAFE**
+
+---
+
+## 🔁 Inference Engine
+
+The reasoning loop works like this:
+
+
+repeat
+for each unknown cell
+try to prove it safe
+until no new information is found
+
+
+---
+
+## 🎮 Controls
+
+| Action        | Description |
+|--------------|------------|
+| ▶ New Game   | Generate a new grid |
+| 👟 Step Once | Move agent one step |
+| ⏩ Auto Run  | Run continuously |
+| 🎚 Speed     | Adjust simulation speed |
+
+---
+
+## 📊 UI Features
+
+- Color-coded grid:
+  - 🟢 Safe
+  - 🔵 Visited
+  - 🔴 Dangerous
+  - ❓ Unknown
+- Live percept indicators
+- Step-by-step decision logs
+
+---
+
+## 🛠 Tech Stack
+
+- **React (Hooks)**
+- JavaScript (ES6)
+- CSS-in-JS styling
+
+---
+
+## 📂 Main Components
+
+
+/logic
+- KnowledgeBase
+- Inference Engine
+- Resolution Logic
+
+/UI
+- Grid Renderer
+- Control Panel
+- Logs Panel
+- Visualization
+
+
+---
+
+## ▶ Running the Project
+npm install
+npm start
+
+## 🎓 What You Learn
+How AI uses logic instead of probability
+Practical use of Resolution in reasoning
+Building interactive simulations with React
+Designing explainable AI systems
+## 💡 Example Insight
+
+If a visited cell has no breeze, then:
+→ All its neighbors cannot have pits
+
+If assuming danger leads to contradiction:
+→ That cell is proven safe
+
+## 🏁 Final Thoughts
+
+This project is a clear demonstration of Symbolic AI in action.
+Instead of guessing, the agent proves safety logically, making decisions that are explainable and reliable.
